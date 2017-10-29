@@ -4,7 +4,7 @@
 # this file to override the defaults if needed.
 #
 # Dependencies:
-#  - Platform.cmake
+#  - PzyPlatform.cmake
 # ----------------------------------------------------------------------------
 
 if( NOT PZY_PROJECT_NAME )
@@ -16,7 +16,7 @@ if( NOT PZY_PROJECT_VERSION )
         set( PZY_PROJECT_VERSION ${PROJECT_VERSION} )
     else()
         set( PZY_PROJECT_VERSION "0.0.0" )
-        message( "No project version specified!" )
+        message( WARNING "No project version specified!" )
     endif()
 endif()
 
@@ -29,3 +29,6 @@ if( PZY_PROJECT_RELEASE )
 else()
     set( CMAKE_INSTALL_PREFIX "${PZY_INSTALL_PREFIX}/${PZY_COMPILER_NAME}/${PZY_COMPILER_ARCH}" CACHE PATH "Repository for project installs" FORCE )
 endif()
+
+set( PZY_INSTALL_BIN "bin/$<LOWER_CASE:$<CONFIG>>" )
+set( PZY_INSTALL_LIB "lib/$<LOWER_CASE:$<CONFIG>>" )

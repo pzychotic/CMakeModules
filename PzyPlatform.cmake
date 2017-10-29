@@ -21,7 +21,7 @@ endif()
 # STREQUAL doesn't work here because MSVC is a variable that gets dereferenced
 if( DEFINED CMAKE_${LANGUAGE}_COMPILER_ID AND CMAKE_${LANGUAGE}_COMPILER_ID MATCHES "MSVC" )
 
-    set( PZY_COMPILER "mscv" )
+    set( PZY_COMPILER "msvc" )
     set( PZY_COMPILER_VERSION ${CMAKE_${LANGUAGE}_COMPILER_VERSION} )
 
     if( MSVC_${LANGUAGE}_ARCHITECTURE_ID STREQUAL "X86" )
@@ -44,6 +44,8 @@ if( DEFINED CMAKE_${LANGUAGE}_COMPILER_ID AND CMAKE_${LANGUAGE}_COMPILER_ID MATC
         set( PZY_COMPILER_NAME "vs2013" )
     elseif( MSVC_VERSION EQUAL 1900 )
         set( PZY_COMPILER_NAME "vs2015" )
+    elseif( MSVC_VERSION EQUAL 1910 OR MSVC_VERSION EQUAL 1911 )
+        set( PZY_COMPILER_NAME "vs2017" )
     endif()
 
 else()
